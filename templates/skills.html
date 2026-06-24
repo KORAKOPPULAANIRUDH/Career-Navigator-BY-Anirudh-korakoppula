@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skill Gap Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+
+    <h1>Skill Gap Analyzer</h1>
+
+    <label>Your Skills:</label>
+    <input type="text" id="skills" placeholder="Python, HTML, CSS">
+
+    <label>Target Role:</label>
+    <select id="role">
+        <option value="AI Engineer">AI Engineer</option>
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Full Stack Developer">Full Stack Developer</option>
+    </select>
+
+    <button onclick="analyzeSkills()">Analyze</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function analyzeSkills() {
+
+    let skills = document.getElementById("skills").value.toLowerCase().split(",");
+
+    let role = document.getElementById("role").value;
+
+    let required = [];
+
+    if(role === "AI Engineer"){
+        required = ["python","machine learning","deep learning","sql"];
+    }
+
+    if(role === "Data Analyst"){
+        required = ["excel","sql","python","power bi"];
+    }
+
+    if(role === "Full Stack Developer"){
+        required = ["html","css","javascript","python"];
+    }
+
+    let missing = required.filter(
+        skill => !skills.includes(skill.trim())
+    );
+
+    document.getElementById("result").innerHTML =
+    "<h3>Missing Skills:</h3>" + missing.join(", ");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Career Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+
+    <h1>Career Recommendation</h1>
+
+    <label>Select Your Interest:</label>
+
+    <select id="interest">
+        <option value="AI">AI / ML</option>
+        <option value="Web">Web Development</option>
+        <option value="Data">Data Science</option>
+        <option value="Cloud">Cloud Computing</option>
+    </select>
+
+    <button onclick="recommendCareer()">Get Recommendation</button>
+
+    <div id="careerResult"></div>
+
+</div>
+
+<script>
+function recommendCareer(){
+
+    let interest = document.getElementById("interest").value;
+
+    let result = "";
+
+    if(interest === "AI"){
+        result =
+        "<h3>AI Engineer</h3>" +
+        "<p>Skills: Python, ML, Deep Learning</p>" +
+        "<p>Expected Salary: 6-12 LPA</p>";
+    }
+
+    if(interest === "Web"){
+        result =
+        "<h3>Full Stack Developer</h3>" +
+        "<p>Skills: HTML, CSS, JavaScript, Python</p>" +
+        "<p>Expected Salary: 4-10 LPA</p>";
+    }
+
+    if(interest === "Data"){
+        result =
+        "<h3>Data Analyst</h3>" +
+        "<p>Skills: SQL, Excel, Power BI, Python</p>" +
+        "<p>Expected Salary: 5-10 LPA</p>";
+    }
+
+    if(interest === "Cloud"){
+        result =
+        "<h3>Cloud Engineer</h3>" +
+        "<p>Skills: AWS, Azure, Linux</p>" +
+        "<p>Expected Salary: 6-14 LPA</p>";
+    }
+
+    document.getElementById("careerResult").innerHTML = result;
+}
+</script>
+
+</body>
+</html>

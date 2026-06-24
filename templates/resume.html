@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="back-btn">
+    <a href="/dashboard">⬅ Back</a>
+</div>
+
+<h1>Resume Builder</h1>
+
+<div class="content-box">
+
+    <input type="text" id="name" placeholder="Full Name">
+
+    <input type="email" id="email" placeholder="Email">
+
+    <input type="text" id="phone" placeholder="Phone Number">
+
+    <input type="text" id="skills" placeholder="Skills">
+
+    <textarea id="education" placeholder="Education"></textarea>
+
+    <textarea id="projects" placeholder="Projects"></textarea>
+
+    <button onclick="generateResume()">
+        Generate Resume
+    </button>
+
+</div>
+
+<div id="resumeOutput" class="content-box"></div>
+
+<script>
+function generateResume(){
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let phone = document.getElementById("phone").value;
+let skills = document.getElementById("skills").value;
+let education = document.getElementById("education").value;
+let projects = document.getElementById("projects").value;
+
+document.getElementById("resumeOutput").innerHTML = `
+<h2>${name}</h2>
+
+<p><b>Email:</b> ${email}</p>
+<p><b>Phone:</b> ${phone}</p>
+
+<h3>Skills</h3>
+<p>${skills}</p>
+
+<h3>Education</h3>
+<p>${education}</p>
+
+<h3>Projects</h3>
+<p>${projects}</p>
+`;
+}
+</script>
+
+</body>
+</html>
